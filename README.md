@@ -7,7 +7,7 @@ python3 -m venv venv
 ---------------------------------------------------------------
 
 #identity \
-pip3 install -r requirements.txt \
+pip3 install -r requirements.txt 
 
 #to build identity as a python library \
 pip3 install wheel \
@@ -15,7 +15,7 @@ pip3 install setuptools \
 pip3 install twine 
 
 #python setup.py pytest \
-python setup.py bdist_wheel 
+python3 setup.py bdist_wheel 
 
 ---------------------------------------------------------------
 

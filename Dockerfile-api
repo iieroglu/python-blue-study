@@ -4,7 +4,7 @@ FROM python:3.8-slim-buster
 
 WORKDIR /code
 
-COPY identity/dist/identity-0.1.0-py3-none-any.whl dist/identity-0.1.0-py3-none-any.whl
+COPY identity/dist/identity-0.1.0-py3-none-any.whl identity/dist/identity-0.1.0-py3-none-any.whl
 COPY api/requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
