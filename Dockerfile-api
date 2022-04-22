@@ -1,0 +1,19 @@
+# syntax=docker/dockerfile:1
+
+FROM python:3.8-slim-buster
+
+WORKDIR /code
+
+COPY identity/dist/identity-0.1.0-py3-none-any.whl dist/identity-0.1.0-py3-none-any.whl
+COPY api/requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+
+COPY api .
+
+RUN echo $(pwd)
+RUN echo $(ls -al dist)
+
+
+EXPOSE 5000
+
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]

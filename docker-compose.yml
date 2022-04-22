@@ -1,0 +1,25 @@
+version: '2'
+services:
+    api:
+        build: 
+          context: .
+          dockerfile: Dockerfile-api
+        ports:
+            - "5000:5000"
+        volumes:
+            - ./api:/code
+    mysql:
+      image: mysql:latest
+      ports:
+        - "3306:3306"
+      volumes:
+        - /var/lib/mysql:/var/lib/mysql
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: test_db
+        MYSQL_USER: test
+        MYSQL_PASSWORD: test_pass
+        MYSQL_ROOT_HOST: '%'  # needs to be enclosed with quotes
+# Names our volume
+volumes:
+  my-db:
