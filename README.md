@@ -12,24 +12,24 @@ pip3 install -r requirements.txt \
 #to build identity as a python library \
 pip3 install wheel \
 pip3 install setuptools \
-pip3 install twine \
+pip3 install twine 
 
 #python setup.py pytest \
-python setup.py bdist_wheel \
+python setup.py bdist_wheel 
 
 ---------------------------------------------------------------
 
 #api \
-pip3 install -r requirements.txt \
+pip3 install -r requirements.txt 
 
 
 ================================================================
 
-Dockerization \
+Dockerization 
 
-Lets start with clearing docker images;  \
+Lets start with clearing docker images;  
 
-docker rmi -f  $(docker images -f "dangling=true" -q) \
+docker rmi -f  $(docker images -f "dangling=true" -q) 
 
-docker-compose up -d --build \
+docker-compose up -d --build 
 
