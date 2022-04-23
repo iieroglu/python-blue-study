@@ -23,7 +23,7 @@ python3 setup.py bdist_wheel
 pip3 install -r requirements.txt 
 
 
-================================================================
+---------------------------------------------------------------
 
 Dockerization 
 
@@ -33,3 +33,13 @@ docker rmi -f  $(docker images -f "dangling=true" -q)
 
 docker-compose up -d --build 
 
+
+---------------------------------------------------------------
+
+Mysql Tables
+
+docker rm -f mysql
+docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=testdb -e MYSQL_ROOT_HOST='%' -d mysql/mysql-server:5.7
+
+
+create table users(id BIGINT NOT NULL AUTO_INCREMENT, name VARCHAR(255), sur_name VARCHAR(255), access_token VARCHAR(255), refresh_token VARCHAR(255), PRIMARY KEY (id))

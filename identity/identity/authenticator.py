@@ -1,4 +1,4 @@
 class Authenticator:
 
-    def authenticate(self):
-        return 123
+    def authenticate(self) -> str:
+        return '123'

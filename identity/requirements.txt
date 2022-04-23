@@ -1,0 +1,6 @@
+wheel
+setuptools
+twine
+
+mysql-connector-python==8.0.28
+jproperties==2.1.1
