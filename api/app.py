@@ -14,6 +14,5 @@ def hello_world():
 def login():
     app.logger.info('abc: %s', app.name)
     as_obj = auth_service.AuthService()
-    as_obj.check_password('')
-    return 'auth successful'
+    return 'auth successful: %s' % as_obj.check_password(123)
 
