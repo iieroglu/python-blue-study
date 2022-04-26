@@ -1,12 +1,7 @@
-class DbObj:
-    def __init__(self, data_source):
-        self.data_source = data_source
-
-    def add_item(self):
-        raise NotImplemented
+import identity.identity.repo.base_repo as base_repo
 
 
-class User(DbObj):
+class User(base_repo.DbObj):
 
     def __init__(self, data_source, user_id, name, surname, date_of_birth, email, gsm):
         super().__init__(data_source)
@@ -50,7 +45,6 @@ class User(DbObj):
         except BaseException as err:
             print(err)
 
-
     def get_all(self):
         try:
             conn = self.data_source.get_connection()
@@ -70,3 +64,22 @@ class User(DbObj):
             cursor.close()
         except BaseException as err:
             print(err)
+
+    def update_item(self):
+        try:
+            conn = self.data_source.get_connection()
+            cursor = conn.cursor()
+            mysql_insert_query = """UPDATE users set name = %s, surname = %s, date_of_birth = %s, email = %s, gsm = %s 
+                                    where id = %s """
+
+            record = (self.name, self.surname, self.date_of_birth, self.email, self.gsm, self.id)
+            cursor.execute(mysql_insert_query, record)
+            conn.commit()
+
+            print('Record updated successfully.. Record Id: %s' % self.id)
+            return self
+        except BaseException as err:
+            # rollback used for if any error
+            print(err)
+            conn.rollback()
+        print("User updated")
