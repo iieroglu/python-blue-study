@@ -44,4 +44,4 @@ docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABA
 
 create table users(id VARCHAR(40) DEFAULT (uuid()) primary key, name VARCHAR(255), surname VARCHAR(255), date_of_birth TIMESTAMP, email VARCHAR(255), gsm VARCHAR(255))
 
-create table sessions(user_id VARCHAR(255), access_token VARCHAR(255), access_token_expiry timestamp, refresh_token VARCHAR(255), INDEX (user_id, access_token))
+create table sessions(id VARCHAR(40), user_id VARCHAR(40) DEFAULT (uuid()) primary key, access_token VARCHAR(40), access_token_expiry timestamp, refresh_token VARCHAR(40), active TINYINT(1))

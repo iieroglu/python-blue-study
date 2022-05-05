@@ -4,7 +4,8 @@ import identity.identity.repo.user_repo as user_repo
 from datetime import datetime
 import uuid
 
-testuuid = str(uuid.uuid4())
+user_uuid = str(uuid.uuid4())
+
 
 def test_repo_connect():
     connect_db()
@@ -32,7 +33,7 @@ def test_add_user():
     mysql_data_source = connect_db()
     birthdate = datetime(1984, 8, 9)
     formatted_date = birthdate.strftime('%Y-%m-%d %H:%M:%S')
-    user_operations = user_repo.User(mysql_data_source, testuuid, 'Ilker', 'Eroglu', formatted_date,
+    user_operations = user_repo.User(mysql_data_source, user_uuid, 'Ilker', 'Eroglu', formatted_date,
                                               'iieroglu@gmail.com', '+905323255873')
     user_operations.add_item()
 
@@ -40,14 +41,14 @@ def test_add_user():
 def test_get_user_by_id():
     mysql_data_source = connect_db()
     user_operations = user_repo.User(mysql_data_source, None, None, None, None, None, None)
-    user = user_operations.get_by_id(testuuid)
+    user = user_operations.get_by_id(user_uuid)
     print('User => name: %s ' % user.name)
 
 
 def test_update_user():
     mysql_data_source = connect_db()
     user_operations = user_repo.User(mysql_data_source, None, None, None, None, None, None)
-    user_update = user_operations.get_by_id(testuuid)
+    user_update = user_operations.get_by_id(user_uuid)
     user_update.data_source = mysql_data_source
     user_update.name = 'TestName'
     user_update.surname = 'TestSurname'
